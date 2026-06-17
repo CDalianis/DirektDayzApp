@@ -1,0 +1,54 @@
+{
+  "Western Macedonia": {
+    "labelX": 245,
+    "labelY": 234
+  },
+  "Epirus": {
+    "labelX": 167,
+    "labelY": 331
+  },
+  "Central Macedonia": {
+    "labelX": 395,
+    "labelY": 194
+  },
+  "Eastern Macedonia and Thrace": {
+    "labelX": 623,
+    "labelY": 156
+  },
+  "Thessaly": {
+    "labelX": 363,
+    "labelY": 341
+  },
+  "Central Greece": {
+    "labelX": 407,
+    "labelY": 469
+  },
+  "Attica": {
+    "labelX": 455,
+    "labelY": 665
+  },
+  "Peloponnese": {
+    "labelX": 353,
+    "labelY": 641
+  },
+  "Western Greece": {
+    "labelX": 255,
+    "labelY": 513
+  },
+  "Crete": {
+    "labelX": 601,
+    "labelY": 900
+  },
+  "South Aegean": {
+    "labelX": 739,
+    "labelY": 718
+  },
+  "North Aegean": {
+    "labelX": 714,
+    "labelY": 445
+  },
+  "Ionian Islands": {
+    "labelX": 128,
+    "labelY": 450
+  }
+}

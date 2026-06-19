@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "products": "Προϊόντα",
+    "producers": "Παραγωγοί",
+    "login": "Σύνδεση",
+    "becomeProducer": "Γίνε παραγωγός",
+    "signUp": "Εγγραφή",
+    "dashboard": "Πίνακας ελέγχου",
+    "logout": "Αποσύνδεση"
+  },
+  "footer": {
+    "tagline": "Απευθείας από το μελίσσι στο τραπέζι — στηρίζουμε τους τοπικούς μελισσοκόμους."
+  },
+  "common": {
+    "loading": "Φόρτωση…",
+    "previous": "Προηγούμενη",
+    "next": "Επόμενη",
+    "pageOf": "Σελίδα {{current}} από {{total}}",
+    "delete": "Διαγραφή",
+    "address": "Διεύθυνση",
+    "phone": "Τηλέφωνο",
+    "price": "Τιμή",
+    "available": "Διαθέσιμο",
+    "producer": "Παραγωγός",
+    "products": "Προϊόντα",
+    "description": "Περιγραφή",
+    "username": "Όνομα χρήστη",
+    "password": "Κωδικός",
+    "region": "Περιοχή",
+    "selectRegion": "Επιλέξτε περιοχή",
+    "kg": "kg",
+    "kgAvailable": "{{amount}} kg διαθέσιμα",
+    "perKg": "€{{price}} / kg",
+    "perKgShort": "€{{price}}/kg",
+    "clearRegion": "Όλες οι περιοχές"
+  },
+  "home": {
+    "title": "Ανακαλύψτε αυθεντικό μέλι από τοπικούς παραγωγούς",
+    "subtitle": "Το DirectDayzapp συνδέει μελισσοκόμους με λάτρεις του μελιού. Περιηγηθείτε σε περιφερειακές ποικιλίες, στηρίξτε μικρούς παραγωγούς και γευτείτε μέλι απευθείας από το μελίσσι.",
+    "browseHoney": "Περιήγηση μελιού",
+    "joinProducer": "Εγγραφή ως παραγωγός",
+    "statRegions": "13 περιοχές",
+    "statRegionsSub": "Σε όλη την Ελλάδα",
+    "statVarieties": "6 ποικιλίες",
+    "statVarietiesSub": "Θυμαρόμελο, πευκόμελο & άλλα",
+    "statDirect": "Απευθείας",
+    "statDirectSub": "Από τον παραγωγό σε εσάς",
+    "mapTitle": "Εξερευνήστε την Ελλάδα ανά περιοχή",
+    "mapHint": "Κάντε κλικ σε μια περιοχή για να δείτε τοπικό μέλι",
+    "mapSelected": "{{region}} — κλικ για περιήγηση στο μέλι"
+  },
+  "login": {
+    "title": "Σύνδεση",
+    "usernameRequired": "Το όνομα χρήστη είναι υποχρεωτικό",
+    "passwordRequired": "Ο κωδικός είναι υποχρεωτικός",
+    "invalidCredentials": "Λάθος όνομα χρήστη ή κωδικός",
+    "signingIn": "Σύνδεση…",
+    "signIn": "Σύνδεση"
+  },
+  "registerProducer": {
+    "title": "Εγγραφή ως παραγωγός μελιού",
+    "business": "Επιχείρηση",
+    "contactAccount": "Επικοινωνία & λογαριασμός",
+    "businessName": "Επωνυμία",
+    "ownerFirstname": "Όνομα ιδιοκτήτη",
+    "ownerLastname": "Επώνυμο ιδιοκτήτη",
+    "vat": "ΑΦΜ",
+    "taxId": "Αριθμός φορολογικού μητρώου",
+    "organicCert": "Αριθμός οργανικής πιστοποίησης",
+    "failed": "Η εγγραφή απέτυχε. Ελέγξτε τα στοιχεία σας.",
+    "registering": "Εγγραφή…",
+    "submit": "Δημιουργία λογαριασμού παραγωγού"
+  },
+  "registerConsumer": {
+    "title": "Εγγραφή ως καταναλωτής",
+    "firstname": "Όνομα",
+    "lastname": "Επώνυμο",
+    "failed": "Η εγγραφή απέτυχε.",
+    "submit": "Δημιουργία λογαριασμού"
+  },
+  "products": {
+    "title": "Κατάλογος μελιού",
+    "searchPlaceholder": "Αναζήτηση με όνομα…",
+    "allTypes": "Όλοι οι τύποι",
+    "loading": "Φόρτωση προϊόντων…",
+    "loadError": "Δεν ήταν δυνατή η φόρτωση των προϊόντων.",
+    "defaultDescription": "Καθαρό τοπικό μέλι.",
+    "viewDetails": "Λεπτομέρειες",
+    "filteredByRegion": "Μέλι από {{region}}",
+    "viewProducersInRegion": "Παραγωγοί στην {{region}}",
+    "noResults": "Δεν βρέθηκαν προϊόντα."
+  },
+  "productDetail": {
+    "notFound": "Το προϊόν δεν βρέθηκε.",
+    "harvest": "Σοδειά {{year}} · {{region}}",
+    "defaultDescription": "Καθαρό τοπικό μέλι από αξιόπιστο παραγωγό.",
+    "viewProducer": "Προβολή παραγωγού"
+  },
+  "producers": {
+    "title": "Παραγωγοί",
+    "searchPlaceholder": "Αναζήτηση με επωνυμία…",
+    "loading": "Φόρτωση παραγωγών…",
+    "loadError": "Δεν ήταν δυνατή η φόρτωση των παραγωγών.",
+    "defaultDescription": "Τοπικός παραγωγός μελιού.",
+    "organicCertified": "Οργανική πιστοποίηση",
+    "viewProducer": "Προβολή παραγωγού",
+    "filteredByRegion": "Παραγωγοί από {{region}}",
+    "viewProductsInRegion": "Μέλι από {{region}}",
+    "noResults": "Δεν βρέθηκαν παραγωγοί."
+  },
+  "producerDetail": {
+    "organicCert": "Οργανική πιστοποίηση",
+    "noProducts": "Δεν υπάρχουν προϊόντα ακόμα."
+  },
+  "dashboard": {
+    "title": "Πίνακας ελέγχου παραγωγού",
+    "loadingProfile": "Φόρτωση του προφίλ παραγωγού…",
+    "addProduct": "Προσθήκη προϊόντος",
+    "yourProducts": "Τα προϊόντα σας",
+    "name": "Όνομα",
+    "honeyType": "Τύπος μελιού",
+    "pricePerKg": "Τιμή (€/kg)",
+    "quantityKg": "Ποσότητα (kg)",
+    "harvestYear": "Έτος σοδειάς",
+    "addProductBtn": "Προσθήκη προϊόντος",
+    "noProducts": "Δεν υπάρχουν προϊόντα ακόμα. Προσθέστε την πρώτη σας παρτίδα παραπάνω."
+  },
+  "honeyType": {
+    "THYME": "Θυμαρόμελο",
+    "PINE": "Πευκόμελο",
+    "ORANGE": "Πορτοκαλιά",
+    "HEATHER": "Ρέικι",
+    "MULTIFLORAL": "Πολύανθο",
+    "OTHER": "Άλλο"
+  },
+  "regions": {
+    "Attica": "Αττική",
+    "Central Greece": "Στερεά Ελλάδα",
+    "Central Macedonia": "Κεντρική Μακεδονία",
+    "Crete": "Κρήτη",
+    "Eastern Macedonia and Thrace": "Ανατολική Μακεδονία και Θράκη",
+    "Epirus": "Ήπειρος",
+    "Ionian Islands": "Ιόνια Νησιά",
+    "North Aegean": "Βόρειο Αιγαίο",
+    "Peloponnese": "Πελοπόννησος",
+    "South Aegean": "Νότιο Αιγαίο",
+    "Thessaly": "Θεσσαλία",
+    "Western Greece": "Δυτική Ελλάδα",
+    "Western Macedonia": "Δυτική Μακεδονία"
+  }
+}

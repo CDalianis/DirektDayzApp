@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "products": "Products",
+    "producers": "Producers",
+    "login": "Login",
+    "becomeProducer": "Become a Producer",
+    "signUp": "Sign Up",
+    "dashboard": "My Dashboard",
+    "logout": "Logout"
+  },
+  "footer": {
+    "tagline": "Direct from apiary to table — supporting local honey producers."
+  },
+  "common": {
+    "loading": "Loading…",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {{current}} of {{total}}",
+    "delete": "Delete",
+    "address": "Address",
+    "phone": "Phone",
+    "price": "Price",
+    "available": "Available",
+    "producer": "Producer",
+    "products": "Products",
+    "description": "Description",
+    "username": "Username",
+    "password": "Password",
+    "region": "Region",
+    "selectRegion": "Select region",
+    "kg": "kg",
+    "kgAvailable": "{{amount}} kg available",
+    "perKg": "€{{price}} / kg",
+    "perKgShort": "€{{price}}/kg",
+    "clearRegion": "Show all regions"
+  },
+  "home": {
+    "title": "Discover authentic honey from local producers",
+    "subtitle": "DirectDayzapp connects beekeepers with honey lovers. Browse regional varieties, support small producers, and taste honey straight from the apiary.",
+    "browseHoney": "Browse honey",
+    "joinProducer": "Join as producer",
+    "statRegions": "13 regions",
+    "statRegionsSub": "Across Greece",
+    "statVarieties": "6 varieties",
+    "statVarietiesSub": "Thyme, pine & more",
+    "statDirect": "Direct",
+    "statDirectSub": "From producer to you",
+    "mapTitle": "Explore Greece by region",
+    "mapHint": "Click a region to browse honey from local producers",
+    "mapSelected": "{{region}} — click to browse honey"
+  },
+  "login": {
+    "title": "Login",
+    "usernameRequired": "Username is required",
+    "passwordRequired": "Password is required",
+    "invalidCredentials": "Invalid username or password",
+    "signingIn": "Signing in…",
+    "signIn": "Sign in"
+  },
+  "registerProducer": {
+    "title": "Register as a honey producer",
+    "business": "Business",
+    "contactAccount": "Contact & account",
+    "businessName": "Business name",
+    "ownerFirstname": "Owner first name",
+    "ownerLastname": "Owner last name",
+    "vat": "VAT",
+    "taxId": "Tax ID",
+    "organicCert": "Organic cert. number",
+    "failed": "Registration failed. Check your details.",
+    "registering": "Registering…",
+    "submit": "Create producer account"
+  },
+  "registerConsumer": {
+    "title": "Sign up as a consumer",
+    "firstname": "First name",
+    "lastname": "Last name",
+    "failed": "Registration failed.",
+    "submit": "Create account"
+  },
+  "products": {
+    "title": "Honey catalog",
+    "searchPlaceholder": "Search by name…",
+    "allTypes": "All types",
+    "loading": "Loading products…",
+    "loadError": "Could not load products.",
+    "defaultDescription": "Pure local honey.",
+    "viewDetails": "View details",
+    "filteredByRegion": "Showing honey from {{region}}",
+    "viewProducersInRegion": "View producers in {{region}}",
+    "noResults": "No products found for this search."
+  },
+  "productDetail": {
+    "notFound": "Product not found.",
+    "harvest": "Harvest {{year}} · {{region}}",
+    "defaultDescription": "Pure local honey from a trusted producer.",
+    "viewProducer": "View producer"
+  },
+  "producers": {
+    "title": "Producers",
+    "searchPlaceholder": "Search by business name…",
+    "loading": "Loading producers…",
+    "loadError": "Could not load producers.",
+    "defaultDescription": "Local honey producer.",
+    "organicCertified": "Organic certified",
+    "viewProducer": "View producer",
+    "filteredByRegion": "Showing producers from {{region}}",
+    "viewProductsInRegion": "View honey from {{region}}",
+    "noResults": "No producers found for this search."
+  },
+  "producerDetail": {
+    "organicCert": "Organic cert.",
+    "noProducts": "No products listed yet."
+  },
+  "dashboard": {
+    "title": "Producer dashboard",
+    "loadingProfile": "Loading your producer profile…",
+    "addProduct": "Add product",
+    "yourProducts": "Your products",
+    "name": "Name",
+    "honeyType": "Honey type",
+    "pricePerKg": "Price (€/kg)",
+    "quantityKg": "Quantity (kg)",
+    "harvestYear": "Harvest year",
+    "addProductBtn": "Add product",
+    "noProducts": "No products yet. Add your first batch above."
+  },
+  "honeyType": {
+    "THYME": "Thyme",
+    "PINE": "Pine",
+    "ORANGE": "Orange blossom",
+    "HEATHER": "Heather",
+    "MULTIFLORAL": "Multifloral",
+    "OTHER": "Other"
+  },
+  "regions": {
+    "Attica": "Attica",
+    "Central Greece": "Central Greece",
+    "Central Macedonia": "Central Macedonia",
+    "Crete": "Crete",
+    "Eastern Macedonia and Thrace": "Eastern Macedonia and Thrace",
+    "Epirus": "Epirus",
+    "Ionian Islands": "Ionian Islands",
+    "North Aegean": "North Aegean",
+    "Peloponnese": "Peloponnese",
+    "South Aegean": "South Aegean",
+    "Thessaly": "Thessaly",
+    "Western Greece": "Western Greece",
+    "Western Macedonia": "Western Macedonia"
+  }
+}

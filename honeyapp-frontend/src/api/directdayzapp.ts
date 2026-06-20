@@ -1,4 +1,4 @@
-direimport { api } from './client';
+import { api } from './client';
 import type { AuthResponse, Consumer, HoneyType, Page, Producer, Product, Region } from '../types';
 
 export const authApi = {

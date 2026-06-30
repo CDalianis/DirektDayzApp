@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: directdayzapp-backend
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/directdayzapp}
+    username: ${SPRING_DATASOURCE_USERNAME:directdayzapp}
+    password: ${SPRING_DATASOURCE_PASSWORD:directdayzapp}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: ${PORT:8080}
+
+# Comma-separated list (include Capacitor Android origins for the .apk)
+allowed:
+  origins: ${ALLOWED_ORIGINS:http://localhost:5173,https://localhost,capacitor://localhost}
+
+app:
+  security:
+    secret-key: ${APP_SECURITY_SECRET_KEY:c2VjcmV0a2V5Zm9yaG9uZXlhcHBqd3RzaG91bGRiZWJhc2U2NA==}
+    jwt-expiration: ${APP_SECURITY_JWT_EXPIRATION:86400000}
+
+file:
+  upload:
+    dir: ${FILE_UPLOAD_DIR:./uploads/}
+
+logging:
+  level:
+    com.honeyapp: ${LOG_LEVEL:INFO}

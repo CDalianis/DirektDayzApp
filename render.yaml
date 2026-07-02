@@ -1,0 +1,56 @@
+# Render Blueprint — DirectDayzapp
+# Docs: https://render.com/docs/blueprint-spec
+#
+# After first deploy:
+# 1. Open directdayzapp-web → set VITE_API_URL (see DEPLOY.md)
+# 2. Redeploy the static site
+# 3. Confirm ALLOWED_ORIGINS on directdayzapp-api includes your web URL
+
+databases:
+  - name: directdayzapp-db
+    plan: free
+    databaseName: directdayzapp
+    user: directdayzapp
+
+services:
+  - type: web
+    name: directdayzapp-api
+    runtime: docker
+    rootDir: honeyapp-backend
+    plan: free
+    healthCheckPath: /v3/api-docs
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: directdayzapp-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: directdayzapp-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: directdayzapp-db
+          property: password
+      - key: APP_SECURITY_SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        value: https://directdayzapp-web.onrender.com,https://localhost,capacitor://localhost
+      - key: LOG_LEVEL
+        value: INFO
+
+  - type: web
+    name: directdayzapp-web
+    runtime: static
+    rootDir: honeyapp-frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      # Set in Render dashboard after API is live, then redeploy:
+      # https://directdayzapp-api.onrender.com/api/v1
+      - key: VITE_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

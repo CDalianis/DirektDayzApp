@@ -1,0 +1,27 @@
+# Local PostgreSQL for DirectDayzapp development.
+# Start: docker compose up -d
+# Backend connects via application.yml defaults (directdayzapp / directdayzapp @ localhost:5432).
+# Flyway migrations V1–V3 run automatically when you start honeyapp-backend.
+
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: directdayzapp-postgres
+    environment:
+      POSTGRES_DB: directdayzapp
+      POSTGRES_USER: directdayzapp
+      POSTGRES_PASSWORD: directdayzapp
+    ports:
+      - "5432:5432"
+    volumes:
+      - directdayzapp_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U directdayzapp -d directdayzapp"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  directdayzapp_pgdata:

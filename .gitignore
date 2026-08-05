@@ -1,0 +1,24 @@
+# Backend
+honeyapp-backend/target/
+honeyapp-backend/uploads/
+*.class
+
+# Frontend
+honeyapp-frontend/node_modules/
+honeyapp-frontend/dist/
+honeyapp-frontend/android/.gradle/
+honeyapp-frontend/android/app/build/
+honeyapp-frontend/android/build/
+honeyapp-frontend/.env.production
+
+honeyapp-frontend/android/
+eduappREFERENCE/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

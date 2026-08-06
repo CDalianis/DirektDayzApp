@@ -11,4 +11,6 @@ public interface IConsumerService {
     ConsumerReadOnlyDTO saveConsumer(ConsumerInsertDTO dto) throws EntityAlreadyExistsException;
 
     ConsumerReadOnlyDTO getConsumerByUuidDeletedFalse(UUID uuid) throws EntityNotFoundException;
+
+    ConsumerReadOnlyDTO getMyConsumerProfile() throws EntityNotFoundException;
 }

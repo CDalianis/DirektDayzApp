@@ -14,6 +14,7 @@ import com.honeyapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,6 +60,17 @@ public class ConsumerService implements IConsumerService {
     public ConsumerReadOnlyDTO getConsumerByUuidDeletedFalse(UUID uuid) throws EntityNotFoundException {
         Consumer consumer = consumerRepository.findByUuidAndDeletedFalse(uuid)
                 .orElseThrow(() -> new EntityNotFoundException("Consumer", "Consumer uuid=" + uuid + " not found"));
+        return mapper.mapToConsumerReadOnlyDTO(consumer);
+    }
+
+    @Override
+    @PreAuthorize("hasAuthority('VIEW_OWN_CONSUMER')")
+    @Transactional(readOnly = true)
+    public ConsumerReadOnlyDTO getMyConsumerProfile() throws EntityNotFoundException {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Consumer consumer = consumerRepository.findByUser_Uuid(user.getUuid())
+                .filter(c -> !c.isDeleted())
+                .orElseThrow(() -> new EntityNotFoundException("Consumer", "Consumer profile not found for current user"));
         return mapper.mapToConsumerReadOnlyDTO(consumer);
     }
 }

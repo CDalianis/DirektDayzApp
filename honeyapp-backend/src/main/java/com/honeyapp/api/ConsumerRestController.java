@@ -40,6 +40,11 @@ public class ConsumerRestController {
         return ResponseEntity.created(location).body(saved);
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<ConsumerReadOnlyDTO> getMyConsumer() throws EntityNotFoundException {
+        return ResponseEntity.ok(consumerService.getMyConsumerProfile());
+    }
+
     @GetMapping("/{uuid}")
     public ResponseEntity<ConsumerReadOnlyDTO> getConsumer(@PathVariable UUID uuid)
             throws EntityNotFoundException {

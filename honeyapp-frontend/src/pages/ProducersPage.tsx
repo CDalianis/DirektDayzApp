@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useSearchParams } from 'react-router-dom';
 import { producerApi, regionApi } from '../api/directdayzapp';
+import { EmptyState } from '../components/EmptyState';
+import { ErrorState } from '../components/ErrorState';
+import { ProductGridSkeleton } from '../components/LoadingSkeleton';
 import { ProducerCard } from '../components/ProducerCard';
+import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { translateRegion } from '../i18n/helpers';
 
 export function ProducersPage() {
@@ -11,24 +15,25 @@ export function ProducersPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const region = searchParams.get('region') ?? '';
   const [businessName, setBusinessName] = useState('');
+  const debouncedBusinessName = useDebouncedValue(businessName, 350);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     setPage(0);
-  }, [region, businessName]);
+  }, [region, debouncedBusinessName]);
 
   const { data: regions = [] } = useQuery({
     queryKey: ['regions'],
     queryFn: regionApi.getAll,
   });
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['producers', page, businessName, region],
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+    queryKey: ['producers', page, debouncedBusinessName, region],
     queryFn: () =>
       producerApi.getAll({
         page,
         size: 9,
-        businessName: businessName || undefined,
+        businessName: debouncedBusinessName || undefined,
         region: region || undefined,
       }),
   });
@@ -39,12 +44,19 @@ export function ProducersPage() {
     setSearchParams(next);
   };
 
+  const clearFilters = () => {
+    setBusinessName('');
+    clearRegion();
+  };
+
   const setRegion = (value: string) => {
     const next = new URLSearchParams(searchParams);
     if (value) next.set('region', value);
     else next.delete('region');
     setSearchParams(next);
   };
+
+  const showSkeleton = isLoading || (isFetching && !data);
 
   return (
     <section>
@@ -64,11 +76,13 @@ export function ProducersPage() {
         <input
           placeholder={t('producers.searchPlaceholder')}
           value={businessName}
-          onChange={(e) => { setBusinessName(e.target.value); setPage(0); }}
+          onChange={(e) => setBusinessName(e.target.value)}
+          aria-label={t('producers.searchPlaceholder')}
         />
         <select
           value={region}
           onChange={(e) => setRegion(e.target.value)}
+          aria-label={t('common.region')}
         >
           <option value="">{t('common.selectRegion')}</option>
           {regions.map((r) => (
@@ -77,24 +91,50 @@ export function ProducersPage() {
         </select>
       </div>
 
-      {isLoading && <p>{t('producers.loading')}</p>}
-      {isError && <p className="error">{t('producers.loadError')}</p>}
+      {showSkeleton && <ProductGridSkeleton count={6} />}
 
-      <div className="grid">
-        {data?.content.map((producer) => (
-          <ProducerCard key={producer.uuid} producer={producer} />
-        ))}
-      </div>
+      {isError && (
+        <ErrorState
+          message={t('producers.loadError')}
+          retryLabel={t('common.retry')}
+          onRetry={() => void refetch()}
+        />
+      )}
 
-      {data && data.content.length === 0 && !isLoading && (
-        <p className="muted">{t('producers.noResults')}</p>
+      {!showSkeleton && !isError && data && data.content.length > 0 && (
+        <div className="grid">
+          {data.content.map((producer) => (
+            <ProducerCard key={producer.uuid} producer={producer} />
+          ))}
+        </div>
+      )}
+
+      {!showSkeleton && !isError && data && data.content.length === 0 && (
+        <EmptyState
+          title={t('producers.noResults')}
+          description={t('producers.noResultsHint')}
+          action={
+            <button type="button" className="btn btn-secondary" onClick={clearFilters}>
+              {t('common.clearFilters')}
+            </button>
+          }
+        />
       )}
 
       {data && data.totalPages > 1 && (
         <div className="pagination">
-          <button disabled={page === 0} onClick={() => setPage((p) => p - 1)}>{t('common.previous')}</button>
+          <button type="button" className="btn btn-secondary" disabled={page === 0} onClick={() => setPage((p) => p - 1)}>
+            {t('common.previous')}
+          </button>
           <span>{t('common.pageOf', { current: page + 1, total: data.totalPages })}</span>
-          <button disabled={page >= data.totalPages - 1} onClick={() => setPage((p) => p + 1)}>{t('common.next')}</button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            disabled={page >= data.totalPages - 1}
+            onClick={() => setPage((p) => p + 1)}
+          >
+            {t('common.next')}
+          </button>
         </div>
       )}
     </section>

@@ -6,7 +6,11 @@
     "becomeProducer": "Become a Producer",
     "signUp": "Sign Up",
     "dashboard": "My Dashboard",
-    "logout": "Logout"
+    "account": "My Account",
+    "logout": "Logout",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "language": "Language"
   },
   "footer": {
     "tagline": "Direct from apiary to table — supporting local honey producers."
@@ -17,6 +21,11 @@
     "next": "Next",
     "pageOf": "Page {{current}} of {{total}}",
     "delete": "Delete",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "retry": "Try again",
+    "required": "This field is required",
+    "minLength": "Must be at least {{count}} characters",
     "address": "Address",
     "phone": "Phone",
     "price": "Price",
@@ -32,7 +41,8 @@
     "kgAvailable": "{{amount}} kg available",
     "perKg": "€{{price}} / kg",
     "perKgShort": "€{{price}}/kg",
-    "clearRegion": "Show all regions"
+    "clearRegion": "Show all regions",
+    "clearFilters": "Clear filters"
   },
   "home": {
     "title": "Discover authentic honey from local producers",
@@ -69,14 +79,26 @@
     "organicCert": "Organic cert. number",
     "failed": "Registration failed. Check your details.",
     "registering": "Registering…",
-    "submit": "Create producer account"
+    "submit": "Create producer account",
+    "success": "Producer account created. Welcome!"
   },
   "registerConsumer": {
     "title": "Sign up as a consumer",
     "firstname": "First name",
     "lastname": "Last name",
     "failed": "Registration failed.",
-    "submit": "Create account"
+    "submit": "Create account",
+    "success": "Account created. You can sign in now."
+  },
+  "account": {
+    "title": "My account",
+    "welcome": "Welcome, {{name}}",
+    "subtitle": "Your DirectDayzapp consumer profile",
+    "loading": "Loading your profile…",
+    "loadError": "Could not load your account.",
+    "browseHoney": "Browse honey",
+    "browseProducers": "Browse producers",
+    "exploreHint": "Find regional honey and local producers across Greece."
   },
   "products": {
     "title": "Honey catalog",
@@ -88,7 +110,8 @@
     "viewDetails": "View details",
     "filteredByRegion": "Showing honey from {{region}}",
     "viewProducersInRegion": "View producers in {{region}}",
-    "noResults": "No products found for this search."
+    "noResults": "No products found",
+    "noResultsHint": "Try a different search, honey type, or clear the region filter."
   },
   "productDetail": {
     "notFound": "Product not found.",
@@ -106,11 +129,13 @@
     "viewProducer": "View producer",
     "filteredByRegion": "Showing producers from {{region}}",
     "viewProductsInRegion": "View honey from {{region}}",
-    "noResults": "No producers found for this search."
+    "noResults": "No producers found",
+    "noResultsHint": "Try another business name or clear the region filter."
   },
   "producerDetail": {
     "organicCert": "Organic cert.",
-    "noProducts": "No products listed yet."
+    "noProducts": "No products listed yet.",
+    "loadError": "Could not load producer."
   },
   "dashboard": {
     "title": "Producer dashboard",
@@ -123,7 +148,29 @@
     "quantityKg": "Quantity (kg)",
     "harvestYear": "Harvest year",
     "addProductBtn": "Add product",
-    "noProducts": "No products yet. Add your first batch above."
+    "addSuccess": "Product added successfully.",
+    "updateQuantity": "Update quantity",
+    "updateQuantityTitle": "Update quantity",
+    "updateQuantityMessage": "Set a new quantity for “{{name}}” and choose why it changed.",
+    "currentQuantity": "Current: {{amount}} kg",
+    "newQuantity": "New quantity (kg)",
+    "quantityReason": "Reason for change",
+    "quantityReasonPlaceholder": "Select a reason",
+    "updateQuantityConfirm": "Save quantity",
+    "updateQuantitySuccess": "Quantity updated.",
+    "deleteTitle": "Delete product?",
+    "deleteMessage": "Remove “{{name}}” from your catalog? This cannot be undone.",
+    "deleteConfirm": "Delete product",
+    "deleteSuccess": "Product deleted.",
+    "noProducts": "No products yet",
+    "noProductsHint": "Add your first batch using the form."
+  },
+  "quantityChangeReason": {
+    "NEW_HARVEST": "New harvest restock",
+    "INVENTORY_CORRECTION": "Inventory count correction",
+    "OFFLINE_SALE": "Sold outside the platform",
+    "DAMAGE_OR_SPOILAGE": "Damage or spoilage",
+    "SAMPLES_OR_PROMOTION": "Samples or promotional giveaway"
   },
   "honeyType": {
     "THYME": "Thyme",

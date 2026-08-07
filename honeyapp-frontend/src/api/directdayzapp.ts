@@ -1,5 +1,14 @@
 import { api } from './client';
-import type { AuthResponse, Consumer, HoneyType, Page, Producer, Product, Region } from '../types';
+import type {
+  AuthResponse,
+  Consumer,
+  HoneyType,
+  Page,
+  Producer,
+  Product,
+  QuantityChangeReason,
+  Region,
+} from '../types';
 
 export const authApi = {
   login: (username: string, password: string) =>
@@ -29,6 +38,7 @@ export const producerApi = {
 
 export const consumerApi = {
   register: (data: unknown) => api.post<Consumer>('/consumers', data).then((r) => r.data),
+  getMe: () => api.get<Consumer>('/consumers/me').then((r) => r.data),
   getByUuid: (uuid: string) => api.get<Consumer>(`/consumers/${uuid}`).then((r) => r.data),
 };
 
@@ -45,6 +55,10 @@ export const productApi = {
   create: (data: unknown) => api.post<Product>('/products', data).then((r) => r.data),
   update: (uuid: string, data: unknown) =>
     api.put<Product>(`/products/${uuid}`, data).then((r) => r.data),
+  updateQuantity: (
+    uuid: string,
+    data: { uuid: string; quantityKg: number; reason: QuantityChangeReason },
+  ) => api.patch<Product>(`/products/${uuid}/quantity`, data).then((r) => r.data),
   delete: (uuid: string) => api.delete<Product>(`/products/${uuid}`).then((r) => r.data),
 };
 
@@ -55,4 +69,12 @@ export const HONEY_TYPES: HoneyType[] = [
   'HEATHER',
   'MULTIFLORAL',
   'OTHER',
+];
+
+export const QUANTITY_CHANGE_REASONS: QuantityChangeReason[] = [
+  'NEW_HARVEST',
+  'INVENTORY_CORRECTION',
+  'OFFLINE_SALE',
+  'DAMAGE_OR_SPOILAGE',
+  'SAMPLES_OR_PROMOTION',
 ];

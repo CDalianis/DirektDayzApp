@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useSearchParams } from 'react-router-dom';
 import { HONEY_TYPES, productApi, regionApi } from '../api/directdayzapp';
+import { EmptyState } from '../components/EmptyState';
+import { ErrorState } from '../components/ErrorState';
+import { ProductGridSkeleton } from '../components/LoadingSkeleton';
 import { ProductCard } from '../components/ProductCard';
+import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { translateHoneyType, translateRegion } from '../i18n/helpers';
 import type { HoneyType } from '../types';
 
@@ -13,25 +17,26 @@ export function ProductsPage() {
   const region = searchParams.get('region') ?? '';
   const [honeyType, setHoneyType] = useState<HoneyType | ''>('');
   const [name, setName] = useState('');
+  const debouncedName = useDebouncedValue(name, 350);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     setPage(0);
-  }, [region, honeyType, name]);
+  }, [region, honeyType, debouncedName]);
 
   const { data: regions = [] } = useQuery({
     queryKey: ['regions'],
     queryFn: regionApi.getAll,
   });
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['products', page, honeyType, name, region],
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
+    queryKey: ['products', page, honeyType, debouncedName, region],
     queryFn: () =>
       productApi.getAll({
         page,
         size: 12,
         honeyType: honeyType || undefined,
-        name: name || undefined,
+        name: debouncedName || undefined,
         region: region || undefined,
       }),
   });
@@ -42,12 +47,20 @@ export function ProductsPage() {
     setSearchParams(next);
   };
 
+  const clearFilters = () => {
+    setName('');
+    setHoneyType('');
+    clearRegion();
+  };
+
   const setRegion = (value: string) => {
     const next = new URLSearchParams(searchParams);
     if (value) next.set('region', value);
     else next.delete('region');
     setSearchParams(next);
   };
+
+  const showSkeleton = isLoading || (isFetching && !data);
 
   return (
     <section>
@@ -67,11 +80,13 @@ export function ProductsPage() {
         <input
           placeholder={t('products.searchPlaceholder')}
           value={name}
-          onChange={(e) => { setName(e.target.value); setPage(0); }}
+          onChange={(e) => setName(e.target.value)}
+          aria-label={t('products.searchPlaceholder')}
         />
         <select
           value={region}
           onChange={(e) => setRegion(e.target.value)}
+          aria-label={t('common.region')}
         >
           <option value="">{t('common.selectRegion')}</option>
           {regions.map((r) => (
@@ -80,7 +95,8 @@ export function ProductsPage() {
         </select>
         <select
           value={honeyType}
-          onChange={(e) => { setHoneyType(e.target.value as HoneyType | ''); setPage(0); }}
+          onChange={(e) => setHoneyType(e.target.value as HoneyType | '')}
+          aria-label={t('dashboard.honeyType')}
         >
           <option value="">{t('products.allTypes')}</option>
           {HONEY_TYPES.map((type) => (
@@ -89,24 +105,50 @@ export function ProductsPage() {
         </select>
       </div>
 
-      {isLoading && <p>{t('products.loading')}</p>}
-      {isError && <p className="error">{t('products.loadError')}</p>}
+      {showSkeleton && <ProductGridSkeleton />}
 
-      <div className="grid">
-        {data?.content.map((product) => (
-          <ProductCard key={product.uuid} product={product} />
-        ))}
-      </div>
+      {isError && (
+        <ErrorState
+          message={t('products.loadError')}
+          retryLabel={t('common.retry')}
+          onRetry={() => void refetch()}
+        />
+      )}
 
-      {data && data.content.length === 0 && !isLoading && (
-        <p className="muted">{t('products.noResults')}</p>
+      {!showSkeleton && !isError && data && data.content.length > 0 && (
+        <div className="grid">
+          {data.content.map((product) => (
+            <ProductCard key={product.uuid} product={product} />
+          ))}
+        </div>
+      )}
+
+      {!showSkeleton && !isError && data && data.content.length === 0 && (
+        <EmptyState
+          title={t('products.noResults')}
+          description={t('products.noResultsHint')}
+          action={
+            <button type="button" className="btn btn-secondary" onClick={clearFilters}>
+              {t('common.clearFilters')}
+            </button>
+          }
+        />
       )}
 
       {data && data.totalPages > 1 && (
         <div className="pagination">
-          <button disabled={page === 0} onClick={() => setPage((p) => p - 1)}>{t('common.previous')}</button>
+          <button type="button" className="btn btn-secondary" disabled={page === 0} onClick={() => setPage((p) => p - 1)}>
+            {t('common.previous')}
+          </button>
           <span>{t('common.pageOf', { current: page + 1, total: data.totalPages })}</span>
-          <button disabled={page >= data.totalPages - 1} onClick={() => setPage((p) => p + 1)}>{t('common.next')}</button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            disabled={page >= data.totalPages - 1}
+            onClick={() => setPage((p) => p + 1)}
+          >
+            {t('common.next')}
+          </button>
         </div>
       )}
     </section>

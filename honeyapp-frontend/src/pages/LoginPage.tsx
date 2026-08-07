@@ -20,7 +20,7 @@ export function LoginPage() {
       if (role === 'PRODUCER') {
         navigate('/producer/dashboard');
       } else {
-        navigate('/products');
+        navigate('/account');
       }
     } catch {
       setError('root', { message: t('login.invalidCredentials') });
@@ -30,16 +30,25 @@ export function LoginPage() {
   return (
     <section className="form-page">
       <h1>{t('login.title')}</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <label>
+      <form onSubmit={handleSubmit(onSubmit)} className="form" noValidate>
+        <label htmlFor="login-username">
           {t('common.username')}
-          <input {...register('username', { required: t('login.usernameRequired') })} />
-          {errors.username && <span className="error">{errors.username.message}</span>}
+          <input
+            id="login-username"
+            autoComplete="username"
+            {...register('username', { required: t('login.usernameRequired') })}
+          />
+          {errors.username && <span className="error field-error">{errors.username.message}</span>}
         </label>
-        <label>
+        <label htmlFor="login-password">
           {t('common.password')}
-          <input type="password" {...register('password', { required: t('login.passwordRequired') })} />
-          {errors.password && <span className="error">{errors.password.message}</span>}
+          <input
+            id="login-password"
+            type="password"
+            autoComplete="current-password"
+            {...register('password', { required: t('login.passwordRequired') })}
+          />
+          {errors.password && <span className="error field-error">{errors.password.message}</span>}
         </label>
         {errors.root && <p className="error">{errors.root.message}</p>}
         <button type="submit" className="btn btn-primary" disabled={isSubmitting}>

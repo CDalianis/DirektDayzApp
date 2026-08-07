@@ -1,5 +1,12 @@
 export type HoneyType = 'THYME' | 'PINE' | 'ORANGE' | 'HEATHER' | 'MULTIFLORAL' | 'OTHER';
 
+export type QuantityChangeReason =
+  | 'NEW_HARVEST'
+  | 'INVENTORY_CORRECTION'
+  | 'OFFLINE_SALE'
+  | 'DAMAGE_OR_SPOILAGE'
+  | 'SAMPLES_OR_PROMOTION';
+
 export interface AuthResponse {
   token: string;
   role: string;

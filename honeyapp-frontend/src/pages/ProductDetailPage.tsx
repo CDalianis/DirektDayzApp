@@ -2,23 +2,40 @@ import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { productApi } from '../api/directdayzapp';
+import { DetailSkeleton } from '../components/LoadingSkeleton';
+import { ErrorState } from '../components/ErrorState';
+import { HoneyImage } from '../components/HoneyImage';
 import { translateHoneyType, translateRegion } from '../i18n/helpers';
 
 export function ProductDetailPage() {
   const { t } = useTranslation();
   const { uuid } = useParams<{ uuid: string }>();
 
-  const { data: product, isLoading, isError } = useQuery({
+  const { data: product, isLoading, isError, refetch } = useQuery({
     queryKey: ['product', uuid],
     queryFn: () => productApi.getByUuid(uuid!),
     enabled: !!uuid,
   });
 
-  if (isLoading) return <p>{t('common.loading')}</p>;
-  if (isError || !product) return <p className="error">{t('productDetail.notFound')}</p>;
+  if (isLoading) return <DetailSkeleton />;
+
+  if (isError || !product) {
+    return (
+      <ErrorState
+        message={t('productDetail.notFound')}
+        retryLabel={t('common.retry')}
+        onRetry={() => void refetch()}
+      />
+    );
+  }
 
   return (
     <section className="detail-page">
+      <HoneyImage
+        honeyType={product.honeyType}
+        size="detail"
+        label={translateHoneyType(product.honeyType)}
+      />
       <span className="card-badge">{translateHoneyType(product.honeyType)}</span>
       <h1>{product.name}</h1>
       <p className="muted">

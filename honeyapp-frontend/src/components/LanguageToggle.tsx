@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import type { AppLanguage } from '../i18n';
 
 export function LanguageToggle() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const current = i18n.language as AppLanguage;
 
   const setLanguage = (lng: AppLanguage) => {
@@ -10,7 +10,7 @@ export function LanguageToggle() {
   };
 
   return (
-    <div className="lang-toggle" role="group" aria-label="Language">
+    <div className="lang-toggle" role="group" aria-label={t('nav.language')}>
       <button
         type="button"
         className={current === 'en' ? 'lang-btn active' : 'lang-btn'}

@@ -3,6 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext';
 import { ProtectedRoute } from './auth/ProtectedRoute';
 import { Layout } from './components/Layout';
+import { ToastProvider } from './components/Toast';
+import { ConsumerAccountPage } from './pages/ConsumerAccountPage';
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { ProducerDashboardPage } from './pages/ProducerDashboardPage';
@@ -19,24 +21,29 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route index element={<HomePage />} />
-              <Route path="login" element={<LoginPage />} />
-              <Route path="register/producer" element={<RegisterProducerPage />} />
-              <Route path="register/consumer" element={<RegisterConsumerPage />} />
-              <Route path="products" element={<ProductsPage />} />
-              <Route path="products/:uuid" element={<ProductDetailPage />} />
-              <Route path="producers" element={<ProducersPage />} />
-              <Route path="producers/:uuid" element={<ProducerDetailPage />} />
-              <Route element={<ProtectedRoute roles={['PRODUCER']} />}>
-                <Route path="producer/dashboard" element={<ProducerDashboardPage />} />
+        <ToastProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route index element={<HomePage />} />
+                <Route path="login" element={<LoginPage />} />
+                <Route path="register/producer" element={<RegisterProducerPage />} />
+                <Route path="register/consumer" element={<RegisterConsumerPage />} />
+                <Route path="products" element={<ProductsPage />} />
+                <Route path="products/:uuid" element={<ProductDetailPage />} />
+                <Route path="producers" element={<ProducersPage />} />
+                <Route path="producers/:uuid" element={<ProducerDetailPage />} />
+                <Route element={<ProtectedRoute roles={['PRODUCER']} />}>
+                  <Route path="producer/dashboard" element={<ProducerDashboardPage />} />
+                </Route>
+                <Route element={<ProtectedRoute roles={['CONSUMER']} />}>
+                  <Route path="account" element={<ConsumerAccountPage />} />
+                </Route>
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </ToastProvider>
       </AuthProvider>
     </QueryClientProvider>
   );

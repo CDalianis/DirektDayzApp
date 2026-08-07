@@ -6,7 +6,11 @@
     "becomeProducer": "Γίνε παραγωγός",
     "signUp": "Εγγραφή",
     "dashboard": "Πίνακας ελέγχου",
-    "logout": "Αποσύνδεση"
+    "account": "Ο λογαριασμός μου",
+    "logout": "Αποσύνδεση",
+    "menu": "Μενού",
+    "closeMenu": "Κλείσιμο μενού",
+    "language": "Γλώσσα"
   },
   "footer": {
     "tagline": "Απευθείας από το μελίσσι στο τραπέζι — στηρίζουμε τους τοπικούς μελισσοκόμους."
@@ -17,6 +21,11 @@
     "next": "Επόμενη",
     "pageOf": "Σελίδα {{current}} από {{total}}",
     "delete": "Διαγραφή",
+    "cancel": "Ακύρωση",
+    "confirm": "Επιβεβαίωση",
+    "retry": "Δοκιμάστε ξανά",
+    "required": "Το πεδίο είναι υποχρεωτικό",
+    "minLength": "Τουλάχιστον {{count}} χαρακτήρες",
     "address": "Διεύθυνση",
     "phone": "Τηλέφωνο",
     "price": "Τιμή",
@@ -32,7 +41,8 @@
     "kgAvailable": "{{amount}} kg διαθέσιμα",
     "perKg": "€{{price}} / kg",
     "perKgShort": "€{{price}}/kg",
-    "clearRegion": "Όλες οι περιοχές"
+    "clearRegion": "Όλες οι περιοχές",
+    "clearFilters": "Καθαρισμός φίλτρων"
   },
   "home": {
     "title": "Ανακαλύψτε αυθεντικό μέλι από τοπικούς παραγωγούς",
@@ -69,14 +79,26 @@
     "organicCert": "Αριθμός οργανικής πιστοποίησης",
     "failed": "Η εγγραφή απέτυχε. Ελέγξτε τα στοιχεία σας.",
     "registering": "Εγγραφή…",
-    "submit": "Δημιουργία λογαριασμού παραγωγού"
+    "submit": "Δημιουργία λογαριασμού παραγωγού",
+    "success": "Ο λογαριασμός παραγωγού δημιουργήθηκε. Καλώς ήρθατε!"
   },
   "registerConsumer": {
     "title": "Εγγραφή ως καταναλωτής",
     "firstname": "Όνομα",
     "lastname": "Επώνυμο",
     "failed": "Η εγγραφή απέτυχε.",
-    "submit": "Δημιουργία λογαριασμού"
+    "submit": "Δημιουργία λογαριασμού",
+    "success": "Ο λογαριασμός δημιουργήθηκε. Μπορείτε να συνδεθείτε."
+  },
+  "account": {
+    "title": "Ο λογαριασμός μου",
+    "welcome": "Καλώς ήρθατε, {{name}}",
+    "subtitle": "Το προφίλ καταναλωτή DirectDayzapp",
+    "loading": "Φόρτωση προφίλ…",
+    "loadError": "Δεν ήταν δυνατή η φόρτωση του λογαριασμού.",
+    "browseHoney": "Περιήγηση μελιού",
+    "browseProducers": "Περιήγηση παραγωγών",
+    "exploreHint": "Βρείτε περιφερειακό μέλι και τοπικούς παραγωγούς σε όλη την Ελλάδα."
   },
   "products": {
     "title": "Κατάλογος μελιού",
@@ -88,7 +110,8 @@
     "viewDetails": "Λεπτομέρειες",
     "filteredByRegion": "Μέλι από {{region}}",
     "viewProducersInRegion": "Παραγωγοί στην {{region}}",
-    "noResults": "Δεν βρέθηκαν προϊόντα."
+    "noResults": "Δεν βρέθηκαν προϊόντα",
+    "noResultsHint": "Δοκιμάστε άλλη αναζήτηση, τύπο μελιού ή καθαρίστε το φίλτρο περιοχής."
   },
   "productDetail": {
     "notFound": "Το προϊόν δεν βρέθηκε.",
@@ -106,11 +129,13 @@
     "viewProducer": "Προβολή παραγωγού",
     "filteredByRegion": "Παραγωγοί από {{region}}",
     "viewProductsInRegion": "Μέλι από {{region}}",
-    "noResults": "Δεν βρέθηκαν παραγωγοί."
+    "noResults": "Δεν βρέθηκαν παραγωγοί",
+    "noResultsHint": "Δοκιμάστε άλλη επωνυμία ή καθαρίστε το φίλτρο περιοχής."
   },
   "producerDetail": {
     "organicCert": "Οργανική πιστοποίηση",
-    "noProducts": "Δεν υπάρχουν προϊόντα ακόμα."
+    "noProducts": "Δεν υπάρχουν προϊόντα ακόμα.",
+    "loadError": "Δεν ήταν δυνατή η φόρτωση του παραγωγού."
   },
   "dashboard": {
     "title": "Πίνακας ελέγχου παραγωγού",
@@ -123,7 +148,29 @@
     "quantityKg": "Ποσότητα (kg)",
     "harvestYear": "Έτος σοδειάς",
     "addProductBtn": "Προσθήκη προϊόντος",
-    "noProducts": "Δεν υπάρχουν προϊόντα ακόμα. Προσθέστε την πρώτη σας παρτίδα παραπάνω."
+    "addSuccess": "Το προϊόν προστέθηκε.",
+    "updateQuantity": "Ενημέρωση ποσότητας",
+    "updateQuantityTitle": "Ενημέρωση ποσότητας",
+    "updateQuantityMessage": "Ορίστε νέα ποσότητα για το «{{name}}» και επιλέξτε τον λόγο αλλαγής.",
+    "currentQuantity": "Τρέχουσα: {{amount}} kg",
+    "newQuantity": "Νέα ποσότητα (kg)",
+    "quantityReason": "Λόγος αλλαγής",
+    "quantityReasonPlaceholder": "Επιλέξτε λόγο",
+    "updateQuantityConfirm": "Αποθήκευση ποσότητας",
+    "updateQuantitySuccess": "Η ποσότητα ενημερώθηκε.",
+    "deleteTitle": "Διαγραφή προϊόντος;",
+    "deleteMessage": "Να αφαιρεθεί το «{{name}}» από τον κατάλογο; Η ενέργεια δεν αναιρείται.",
+    "deleteConfirm": "Διαγραφή προϊόντος",
+    "deleteSuccess": "Το προϊόν διαγράφηκε.",
+    "noProducts": "Δεν υπάρχουν προϊόντα ακόμα",
+    "noProductsHint": "Προσθέστε την πρώτη σας παρτίδα από τη φόρμα."
+  },
+  "quantityChangeReason": {
+    "NEW_HARVEST": "Αναπλήρωση από νέα σοδειά",
+    "INVENTORY_CORRECTION": "Διόρθωση απογραφής",
+    "OFFLINE_SALE": "Πώληση εκτός πλατφόρμας",
+    "DAMAGE_OR_SPOILAGE": "Ζημιά ή αλλοίωση",
+    "SAMPLES_OR_PROMOTION": "Δείγματα ή προωθητική διάθεση"
   },
   "honeyType": {
     "THYME": "Θυμαρόμελο",

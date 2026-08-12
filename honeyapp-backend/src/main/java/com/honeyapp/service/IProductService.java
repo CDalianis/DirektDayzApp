@@ -2,7 +2,9 @@ package com.honeyapp.service;
 
 import com.honeyapp.core.exceptions.EntityNotFoundException;
 import com.honeyapp.core.filters.ProductFilters;
+import com.honeyapp.core.exceptions.EntityInvalidArgumentException;
 import com.honeyapp.dto.ProductInsertDTO;
+import com.honeyapp.dto.ProductQuantityUpdateDTO;
 import com.honeyapp.dto.ProductReadOnlyDTO;
 import com.honeyapp.dto.ProductUpdateDTO;
 import org.springframework.data.domain.Page;
@@ -13,7 +15,11 @@ import java.util.UUID;
 public interface IProductService {
     ProductReadOnlyDTO saveProduct(ProductInsertDTO dto) throws EntityNotFoundException;
 
-    ProductReadOnlyDTO updateProduct(ProductUpdateDTO dto) throws EntityNotFoundException;
+    ProductReadOnlyDTO updateProduct(ProductUpdateDTO dto)
+            throws EntityNotFoundException, EntityInvalidArgumentException;
+
+    ProductReadOnlyDTO updateProductQuantity(ProductQuantityUpdateDTO dto)
+            throws EntityNotFoundException, EntityInvalidArgumentException;
 
     ProductReadOnlyDTO deleteProductByUuid(UUID uuid) throws EntityNotFoundException;
 

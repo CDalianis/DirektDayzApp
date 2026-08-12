@@ -5,6 +5,7 @@ import com.honeyapp.core.exceptions.EntityNotFoundException;
 import com.honeyapp.core.exceptions.ValidationException;
 import com.honeyapp.core.filters.ProductFilters;
 import com.honeyapp.dto.ProductInsertDTO;
+import com.honeyapp.dto.ProductQuantityUpdateDTO;
 import com.honeyapp.dto.ProductReadOnlyDTO;
 import com.honeyapp.dto.ProductUpdateDTO;
 import com.honeyapp.service.IProductService;
@@ -59,6 +60,22 @@ public class ProductRestController {
             throw new ValidationException("Product", "Invalid product data", bindingResult);
         }
         return ResponseEntity.ok(productService.updateProduct(dto));
+    }
+
+    @PatchMapping("/{uuid}/quantity")
+    public ResponseEntity<ProductReadOnlyDTO> updateProductQuantity(
+            @PathVariable UUID uuid,
+            @Valid @RequestBody ProductQuantityUpdateDTO dto,
+            BindingResult bindingResult)
+            throws EntityNotFoundException, ValidationException, EntityInvalidArgumentException {
+
+        if (!uuid.equals(dto.uuid())) {
+            throw new EntityInvalidArgumentException("Product", "Path uuid does not match body uuid");
+        }
+        if (bindingResult.hasErrors()) {
+            throw new ValidationException("Product", "Invalid product quantity data", bindingResult);
+        }
+        return ResponseEntity.ok(productService.updateProductQuantity(dto));
     }
 
     @GetMapping

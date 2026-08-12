@@ -1,6 +1,7 @@
 package com.honeyapp.dto;
 
 import com.honeyapp.model.HoneyType;
+import com.honeyapp.model.QuantityChangeReason;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
@@ -13,5 +14,6 @@ public record ProductUpdateDTO(
         String description,
         @NotNull @DecimalMin("0.01") BigDecimal price,
         @NotNull @DecimalMin("0.01") BigDecimal quantityKg,
-        @NotNull @Min(2000) @Max(2100) Integer harvestYear
+        @NotNull @Min(2000) @Max(2100) Integer harvestYear,
+        QuantityChangeReason quantityChangeReason
 ) {}

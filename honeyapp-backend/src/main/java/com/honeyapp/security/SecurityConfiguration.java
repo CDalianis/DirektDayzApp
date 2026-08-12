@@ -63,6 +63,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/producers/*").hasAuthority("DELETE_PRODUCER")
                         .requestMatchers(HttpMethod.POST, "/api/v1/products").hasAuthority("MANAGE_OWN_PRODUCTS")
                         .requestMatchers(HttpMethod.PUT, "/api/v1/products/*").hasAuthority("MANAGE_OWN_PRODUCTS")
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/products/*/quantity").hasAuthority("MANAGE_OWN_PRODUCTS")
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/products/*").hasAuthority("MANAGE_OWN_PRODUCTS")
                         .requestMatchers(HttpMethod.GET, "/api/v1/consumers/me").hasAuthority("VIEW_OWN_CONSUMER")
                         .requestMatchers(HttpMethod.GET, "/api/v1/consumers/*").hasAuthority("VIEW_OWN_CONSUMER")

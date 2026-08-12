@@ -13,7 +13,8 @@
     "language": "Language"
   },
   "footer": {
-    "tagline": "Direct from apiary to table — supporting local honey producers."
+    "tagline": "Direct from apiary to table — supporting local honey producers.",
+    "uiCredit": "UI interactions adapted from"
   },
   "common": {
     "loading": "Loading…",
@@ -57,7 +58,9 @@
     "statDirectSub": "From producer to you",
     "mapTitle": "Explore Greece by region",
     "mapHint": "Click a region to browse honey from local producers",
-    "mapSelected": "{{region}} — click to browse honey"
+    "mapSelected": "{{region}} — click to browse honey",
+    "varietiesTitle": "Honey varieties",
+    "varietiesSubtitle": "Hover a jar to expand — thyme, pine, orange blossom, and more."
   },
   "login": {
     "title": "Login",

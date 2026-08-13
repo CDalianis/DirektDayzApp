@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../auth/AuthContext';
 import { BrandLogo } from './BrandLogo';
 import { LanguageToggle } from './LanguageToggle';
+import { AnimatedExternalLink, AnimatedNavLink } from './ui/skiper-ui/AnimatedNavLink';
 
 export function Layout() {
   const { t } = useTranslation();
@@ -28,6 +29,8 @@ export function Layout() {
     setMenuOpen(false);
     navigate('/');
   };
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <div className="app-shell">
@@ -54,20 +57,28 @@ export function Layout() {
           />
         )}
         <nav id="main-nav" className={`nav${menuOpen ? ' open' : ''}`}>
-          <Link to="/products">{t('nav.products')}</Link>
-          <Link to="/producers">{t('nav.producers')}</Link>
+          <AnimatedNavLink to="/products" onClick={closeMenu}>{t('nav.products')}</AnimatedNavLink>
+          <AnimatedNavLink to="/producers" onClick={closeMenu}>{t('nav.producers')}</AnimatedNavLink>
           {!isAuthenticated && (
             <>
-              <Link to="/login">{t('nav.login')}</Link>
-              <Link to="/register/producer">{t('nav.becomeProducer')}</Link>
-              <Link to="/register/consumer">{t('nav.signUp')}</Link>
+              <AnimatedNavLink to="/login" onClick={closeMenu}>{t('nav.login')}</AnimatedNavLink>
+              <AnimatedNavLink to="/register/producer" onClick={closeMenu}>
+                {t('nav.becomeProducer')}
+              </AnimatedNavLink>
+              <AnimatedNavLink to="/register/consumer" onClick={closeMenu}>
+                {t('nav.signUp')}
+              </AnimatedNavLink>
             </>
           )}
           {isAuthenticated && role === 'PRODUCER' && (
-            <Link to="/producer/dashboard">{t('nav.dashboard')}</Link>
+            <AnimatedNavLink to="/producer/dashboard" onClick={closeMenu}>
+              {t('nav.dashboard')}
+            </AnimatedNavLink>
           )}
           {isAuthenticated && role === 'CONSUMER' && (
-            <Link to="/account">{t('nav.account')}</Link>
+            <AnimatedNavLink to="/account" onClick={closeMenu}>
+              {t('nav.account')}
+            </AnimatedNavLink>
           )}
           {isAuthenticated && (
             <button type="button" className="btn-link" onClick={handleLogout}>
@@ -82,6 +93,12 @@ export function Layout() {
       </main>
       <footer className="footer">
         <p>{t('footer.tagline')}</p>
+        <p className="footer-credit muted">
+          {t('footer.uiCredit')}{' '}
+          <AnimatedExternalLink href="https://skiper-ui.com/" className="footer-credit-link">
+            Skiper UI
+          </AnimatedExternalLink>
+        </p>
       </footer>
     </div>
   );

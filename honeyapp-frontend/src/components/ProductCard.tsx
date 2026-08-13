@@ -3,12 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { translateHoneyType, translateRegion } from '../i18n/helpers';
 import type { Product } from '../types';
 import { HoneyImage } from './HoneyImage';
+import { MotionCard } from './ui/skiper-ui/MotionCard';
 
 export function ProductCard({ product }: { product: Product }) {
   const { t } = useTranslation();
 
   return (
-    <article className="card product-card">
+    <MotionCard className="card product-card">
       <HoneyImage honeyType={product.honeyType} label={translateHoneyType(product.honeyType)} />
       <div className="product-card-body">
         <div className="card-badge">{translateHoneyType(product.honeyType)}</div>
@@ -23,6 +24,6 @@ export function ProductCard({ product }: { product: Product }) {
           {t('products.viewDetails')}
         </Link>
       </div>
-    </article>
+    </MotionCard>
   );
 }
